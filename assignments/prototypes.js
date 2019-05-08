@@ -32,8 +32,10 @@ GameObject.prototype.destroy = function(){
 function CharacterStats(attr){
   this.healthPoints = attr.healthPoints;
   GameObject.call(this, attr);                                                                              //this right here got me stuck for almost an hour was 
-CharacterStats.prototype = Object.create(GameObject.prototype);                                             //about to post in help but figured it out
-CharacterStats.prototype.takeDamage = function(){
+
+}
+  CharacterStats.prototype = Object.create(GameObject.prototype);                                             //about to post in help but figured it out
+  CharacterStats.prototype.takeDamage = function(){
   return `${this.name} took damge.`
 }
 /*
