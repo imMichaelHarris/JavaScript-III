@@ -53,7 +53,6 @@ function Humanoid(attr){
   this.language = attr.language;
   CharacterStats.call(this, attr);                                                                                  //this as well line 34
 }
-
 Humanoid.prototype = Object.create(CharacterStats.prototype)
 Humanoid.prototype.greet = function(){                                          //issuse with archer not a function but had to inherit 
   return `${this.name} offers a greeting in ${this.language}.`                 //CharacterStats first
@@ -132,5 +131,55 @@ Humanoid.prototype.greet = function(){                                          
 
   // Stretch task: 
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
+  function Villian(attr){
+    this.bad = attr;
+    this.nemesis = attr;
+    Humanoid.call(this, attr);
+  }
+  function Hero(attr){
+    Humanoid.call(this, attr);
+    this.good = attr;
+  }
+  const hank = new Villian({
+    bad: 'Bery Bad',
+    name: 'Hank',
+    nemesis: 'Betty',
+    createdAt: new Date(),
+    dimensions: {
+      length: 2,
+      width: 2,
+      height: 4,
+    },
+    healthPoints: 12,
+    team: 'Joseph',
+    weapons: [
+      'Mace',
+      'Dagger',
+    ],
+    power: 'lighting',
+    language: 'Elvish',
+  })
+  const betty = new Hero({
+    good: 'angel',
+    name: 'Betty',
+    nemesis: 'Hank',
+    createdAt: new Date(),
+    dimensions: {
+      length: 1,
+      width: 4,
+      height: 4,
+    },
+    healthPoints: 8,
+    team: 'Edward',
+    weapons: [
+      'bow'
+    ],
+    language: 'Common tounge',
+  })
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
+  Villian.prototype.kill = function(){
+    return `${this.name} used ${this.power} to drain his enemies!`
+  }
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
+  console.log(hank.kill());
+  console.log(betty);
